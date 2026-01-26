@@ -37,6 +37,11 @@ on:
         required: true
         type: boolean
         default: false
+      build_a16_612:
+        description: "Build a16  6.12?"
+        required: true
+        type: boolean
+        default: false
       make_release:
         description: "Do you want to create a release?"
         required: true
@@ -118,6 +123,16 @@ jobs:
   build-kernel-a15-6-6:
     if: ${{ inputs.build_a15_66 }}
     uses: ./.github/workflows/kernel-a15-6.6.yml
+    secrets: inherit
+    with:
+      make_release: ${{ inputs.make_release }}
+      kernelsu_variant: ${{ inputs.kernelsu_variant }}
+      kernelsu_branch: ${{ inputs.kernelsu_branch }}
+      kernelsu_branch_other: ${{ inputs.kernelsu_branch_other }}
+
+  build-kernel-a15-6-6:
+    if: ${{ inputs.build_a16_612 }}
+    uses: ./.github/workflows/kernel-a16-6.12.yml
     secrets: inherit
     with:
       make_release: ${{ inputs.make_release }}
