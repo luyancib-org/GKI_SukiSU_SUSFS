@@ -231,18 +231,6 @@ jobs:
           cp ../susfs4ksu/kernel_patches/50_add_susfs_in_gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}.patch ./common/
           cp ../susfs4ksu/kernel_patches/fs/* ./common/fs/
           cp ../susfs4ksu/kernel_patches/include/linux/* ./common/include/linux/
-      #     if [ "${{ inputs.kernelsu_variant }}" == "SukiSU" ]; then
-      #       echo "Applying SUSFS patches for SukiSU..."
-      #        cd KernelSU
-            
-            
-      #       echo "Applying SukiSU specific SUSFS patch..."
-      #     else
-      #       echo "Invalid KernelSU variant selected!"
-      #       exit 1
-      #     fi
-
-      #     # Change to common directory and apply common SUSFS patch
           cd ../common
           patch --fuzz=3 -p1 < 50_add_susfs_in_gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}.patch || true
 
