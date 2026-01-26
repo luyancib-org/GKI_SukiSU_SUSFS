@@ -130,7 +130,7 @@ jobs:
       kernelsu_branch: ${{ inputs.kernelsu_branch }}
       kernelsu_branch_other: ${{ inputs.kernelsu_branch_other }}
 
-  build-kernel-a15-6-6:
+  build-kernel-a16-6-12:
     if: ${{ inputs.build_a16_612 }}
     uses: ./.github/workflows/kernel-a16-6.12.yml
     secrets: inherit
